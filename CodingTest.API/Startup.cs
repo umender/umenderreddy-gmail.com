@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using CodingTest.BAL.Repositories;
 using CodingTest.BAL.Domain;
 using Microsoft.Extensions.Logging;
+using CodingTest.BAL;
+using CodingTest.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace CodingTest.API
 {
@@ -29,6 +32,8 @@ namespace CodingTest.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TestDbContext>(options =>
+       options.UseSqlServer(Configuration.GetConnectionString("TestDataBase")));
             services.AddCors();
             services.AddControllers();
             
@@ -61,6 +66,7 @@ namespace CodingTest.API
         
             services.AddScoped<IUser, User>();
             services.AddScoped<IRecruiter , Recruiter>();
+            services.AddScoped<IUnitOfWork, UnitofWork>();
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
         }
 

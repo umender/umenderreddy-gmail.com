@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodingTest.BAL\CodingTest.BAL.csproj" />
+    <ProjectReference Include="..\CodingTest.DAL\CodingTest.DAL.csproj" />
   </ItemGroup>
 
 </Project>
