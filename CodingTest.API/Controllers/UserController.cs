@@ -10,11 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using CodingTest.API.Filters.Auth;
 
 namespace CodingTest.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    
     public class UserController : ControllerBase
     {
         private IUser  _user;

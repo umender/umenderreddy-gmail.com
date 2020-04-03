@@ -60,6 +60,7 @@ namespace CodingTest.API
             // configure DI for application services
         
             services.AddScoped<IUser, User>();
+            services.AddScoped<IRecruiter , Recruiter>();
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
         }
 

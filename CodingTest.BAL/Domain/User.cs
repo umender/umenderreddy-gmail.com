@@ -52,13 +52,16 @@ namespace CodingTest.BAL.Domain
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString(),user.Role)
+                    new Claim(ClaimTypes.Role, user.Role.ToString()),
+                     new Claim(ClaimTypes.Name, user.LastName.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddDays(7),
+             
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
+
+            
 
             return user;
         }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CodingTest.BAL.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CodingTest.BAL.Domain
 {
-   public class Recruiter
+   public class Recruiter : IRecruiter
     {
         public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
