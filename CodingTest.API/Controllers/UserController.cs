@@ -7,30 +7,43 @@ using CodingTest.BAL.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace CodingTest.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IUser _userService;
+        private IUser  _user;
 
-        public UserController(IUser userService)
+
+        public UserController(IUser user)
         {
-            _userService = userService;
+            _user = user;
         }
+      
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]User model)
+        //[HttpPost("authenticate")]
+        [HttpPost]
+        public IActionResult Post(string uname,string pwd)
         {
-            var user = _userService.Authenticate(model.Username, model.Password);
+          
+            var user = _user.Authenticate(uname, pwd);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
             return Ok(user);
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("hello");
         }
     }
 }

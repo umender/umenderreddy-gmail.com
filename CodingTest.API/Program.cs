@@ -21,6 +21,7 @@ namespace CodingTest.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                      
                 });
     }
 }
