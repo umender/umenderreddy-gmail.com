@@ -1,2 +1,0 @@
-# umenderreddy-gmail.com
-CodingTest
