@@ -14,71 +14,68 @@ namespace CodingTest.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class RecruiterController : ControllerBase
+    public class SourcingDefinitionController : ControllerBase
     {
-
         private IUnitOfWork _unitOfWork;
-
-        public RecruiterController(IUnitOfWork unitOf)
+        public SourcingDefinitionController(IUnitOfWork unitOf)
         {
-
             _unitOfWork = unitOf;
-
         }
         [AuthReader]
         [HttpGet]
         public IActionResult Get()
         {
-          var Recruters=  _unitOfWork.RecruiterRepo.GetAll().ToList();
-            return Ok(Recruters);
+            var sourcings = _unitOfWork.SourcingDefinitionRepo.GetAll().ToList();
+            return Ok(sourcings);
         }
         [AuthContributer]
         [HttpPost]
-        public IActionResult Post(Recruiter recruiter)
+        public IActionResult Post(SourcingDefinition sourcing)
         {
-            if (recruiter == null)
+            if (sourcing == null)
             {
-                return Ok("Invalid Recruiter");
+                return Ok("Invalid sourcing");
             }
             else
             {
-                _unitOfWork.RecruiterRepo.Add(recruiter);
+                _unitOfWork.SourcingDefinitionRepo.Add(sourcing);
                 _unitOfWork.Complete();
-                return Ok(recruiter);
+                return Ok(sourcing);
             }
 
         }
         [AuthContributer]
-        [HttpPut]
-        public IActionResult Update(Recruiter recruiter)
+        [HttpPost]
+        public IActionResult Update(SourcingDefinition sourcing)
         {
-            if (recruiter == null)
+            if (sourcing == null)
             {
-                return Ok("Invalid Recruiter");
+                return Ok("Invalid sourcing");
             }
             else
             {
-                _unitOfWork.RecruiterRepo.Update(recruiter);
+                _unitOfWork.SourcingDefinitionRepo.Update(sourcing);
                 _unitOfWork.Complete();
-                return Ok(recruiter);
+                return Ok(sourcing);
             }
 
         }
         [AuthFullAccess]
-        [HttpDelete]
-        public IActionResult Delete(Recruiter recruiter)
+        [HttpPost]
+        public IActionResult Delete(SourcingDefinition sourcing)
         {
-            if (recruiter == null)
+            if (sourcing == null)
             {
-                return Ok("Invalid Recruiter");
+                return Ok("Invalid sourcing");
             }
             else
             {
-                _unitOfWork.RecruiterRepo.Remove(recruiter);
+                _unitOfWork.SourcingDefinitionRepo.Remove(sourcing);
                 _unitOfWork.Complete();
-                return Ok(recruiter);
+                return Ok(sourcing);
             }
 
         }
+
     }
 }

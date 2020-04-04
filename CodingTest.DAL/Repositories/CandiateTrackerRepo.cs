@@ -12,5 +12,11 @@ namespace CodingTest.DAL.Repositories
         {
 
         }
+
+       
+        BAL.Domain.CandiateVM ICandiateTracker.GetCandiateTracker()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

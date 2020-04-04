@@ -15,7 +15,7 @@ namespace CodingTest.API.Filters
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            string[] roles = { "FULLACCESS", "CONTRIBUTER" };
+            string[] roles = { "FULLACCESS", "CONTRIBUTOR" };
             if (!ValidateAuthHeaders.TryRetrieveToken(context.HttpContext.Request, out StringValues token, roles))
             {
                 context.Result = new UnauthorizedResult();
