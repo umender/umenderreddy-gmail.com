@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CodingTest.API.Filters.Auth;
 using CodingTest.BAL;
+using CodingTest.BAL.Domain;
 using CodingTest.BAL.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,13 +15,12 @@ namespace CodingTest.API.Controllers
     [ApiController]
     public class RecruiterController : ControllerBase
     {
-        private IRecruiter _recruiter;
-
+      
         private IUnitOfWork _unitOfWork;
        
-        public RecruiterController(IRecruiter recruiter,IUnitOfWork unitOf)
+        public RecruiterController(IUnitOfWork unitOf)
         {
-            _recruiter = recruiter;
+           
             _unitOfWork = unitOf;
 
         }

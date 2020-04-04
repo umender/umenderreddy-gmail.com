@@ -6,6 +6,7 @@ namespace CodingTest.BAL.Domain
 {
     public class SourcingDefinition 
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string SearchCriteria { get; set; }
         public string TargetCompanies { get; set; }

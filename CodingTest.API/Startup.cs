@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using CodingTest.BAL;
 using CodingTest.DAL;
 using Microsoft.EntityFrameworkCore;
+using CodingTest.DAL.Repositories;
 
 namespace CodingTest.API
 {
@@ -32,8 +33,7 @@ namespace CodingTest.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TestDbContext>(options =>
-       options.UseSqlServer(Configuration.GetConnectionString("TestDataBase")));
+  
             services.AddCors();
             services.AddControllers();
             
@@ -65,9 +65,14 @@ namespace CodingTest.API
             // configure DI for application services
         
             services.AddScoped<IUser, User>();
-            services.AddScoped<IRecruiter , Recruiter>();
-            services.AddScoped<IUnitOfWork, UnitofWork>();
+           
+            
+            
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+            services.AddSingleton<IUnitOfWork, UnitofWork>();
+
+       
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

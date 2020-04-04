@@ -1,21 +1,23 @@
 ﻿using CodingTest.BAL.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CodingTest.DAL
 {
   public  class TestDbContext :DbContext
     {
-        public TestDbContext() 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // this.Database.Connection.ConnectionString = "Data Source=.;Initial Catalog=CodingTest;Integrated Security=True;Pooling=False";
-           
+            optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=CodingTest;Integrated Security=True");
         }
-        public virtual DbSet<Recruiter> Recruiters { get; set; }
-        public virtual DbSet<SourcingDefinition> SourcingDefinitions { get; set; }
-        public virtual DbSet<CandiateTracker> CandiateTrackers { get; set; }
+        public virtual DbSet<Recruiter> Recruiter { get; set; }
+        public virtual DbSet<SourcingDefinition> SourcingDefinition { get; set; }
+        public virtual DbSet<CandiateTracker> CandiateTracker { get; set; }
        
 
     }

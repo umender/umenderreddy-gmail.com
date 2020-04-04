@@ -7,6 +7,6 @@ namespace CodingTest.BAL.Repositories
 {
   public interface IRecruiter :IRepository<Recruiter>
     {
-      
+        
     }
 }
